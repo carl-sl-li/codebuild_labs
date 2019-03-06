@@ -1,8 +1,13 @@
 version: 0.2
 env:
-  variables:
-    GOOS: "darwin"
+  parameter-store:
+    GOOS: "/codebuild-nht/goos"
+#  variables:
+#    GOOS: "darwin"
 phases:
+  pre_build:
+    commands:
+      - env
   build:
     commands:
       - echo Build started on `date`
@@ -10,4 +15,4 @@ phases:
       - make -f lab_01/Makefile
 artifacts:
   files:
-    - hello.exe
+    - hello
