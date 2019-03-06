@@ -19,11 +19,24 @@ phases:
       - mkdir -p OUT/$GOOS
       - make -f lab_01/Makefile
       - mv hello OUT/$GOOS/
-
-
+      - echo Compiling the Go code for MacOS...
+      - GOOS=$Build2
+      - mkdir -p OUT/$GOOS
+      - make -f lab_01/Makefile
+      - mv hello OUT/$GOOS/
+      - echo Compiling the Go code for MacOS...
+      - GOOS=$Build3
+      - mkdir -p OUT/$GOOS
+      - make -f lab_01/Makefile
+      - mv hello OUT/$GOOS/
 artifacts:
   files:
-    - lab_01/*
     - OUT/$Build1/*
+    - OUT/$Build2/*
+    - OUT/$Build3/*
   name: OUTPUT
-#  discard-paths: yes
+  secondary-artifacts:
+    source::
+      files:
+        - lab_01/*
+      discard-paths: yes
