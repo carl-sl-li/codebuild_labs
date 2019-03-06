@@ -16,27 +16,23 @@ phases:
       - echo Build started on `date`
       - echo Compiling the Go code for MacOS...
       - GOOS=$Build1
-      - mkdir -p OUT/$GOOS
+      - mkdir -p lab_01/OUT/$GOOS
       - make -f lab_01/Makefile
-      - mv hello OUT/$GOOS/
+      - mv hello lab_01/OUT/$GOOS/
       - echo Compiling the Go code for Linux...
       - GOOS=$Build2
-      - mkdir -p OUT/$GOOS
+      - mkdir -p lab_01/OUT/$GOOS
       - make -f lab_01/Makefile
-      - mv hello OUT/$GOOS/
+      - mv hello lab_01/OUT/$GOOS/
       - echo Compiling the Go code for Windows...
       - GOOS=$Build3
-      - mkdir -p OUT/$GOOS
+      - mkdir -p lab_01/OUT/$GOOS
       - make -f lab_01/Makefile
-      - mv hello.exe OUT/$GOOS/
+      - mv hello.exe lab_01/OUT/$GOOS/
 artifacts:
   files:
     - OUT/$Build1/*
     - OUT/$Build2/*
     - OUT/$Build3/*
-  name: OUTPUT
-  secondary-artifacts:
-    source::
-      files:
-        - lab_01/*
-      discard-paths: yes
+    - '*' 
+  base-directory: lab_01
