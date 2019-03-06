@@ -1,9 +1,12 @@
 version: 0.2
 env:
-  parameter-store:
-    GOOS: "/codebuild-nht/goos"
-#  variables:
+#  parameter-store:
+#    GOOS: "/codebuild-nht/goos"
+  variables:
 #    GOOS: "darwin"
+     Build1: "darwin"
+     Build2: "linux"
+     Build3: "windows"
 phases:
   pre_build:
     commands:
@@ -11,11 +14,16 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - echo Compiling the Go code...
+      - echo Compiling the Go code for MacOS...
+      - GOOS=$Build1
+      - mkdir -p OUT/$GOOS
       - make -f lab_01/Makefile
+      - mv hello OUT/$GOOS/
+
+
 artifacts:
   files:
     - lab_01/*
-    - hello
+    - OUT/$Build1/*
   name: OUTPUT
-  discard-paths: yes
+#  discard-paths: yes
