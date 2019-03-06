@@ -15,4 +15,6 @@ phases:
       - make -f lab_01/Makefile
 artifacts:
   files:
-    - '*'
+    - '**/*'
+  name: OUTPUT
+  discard-paths: yes
