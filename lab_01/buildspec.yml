@@ -10,4 +10,4 @@ phases:
       - make -f lab_01/Makefile
 artifacts:
   files:
-    - hello
+    - hello.exe
