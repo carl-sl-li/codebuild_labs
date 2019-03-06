@@ -19,16 +19,16 @@ phases:
       - mkdir -p OUT/$GOOS
       - make -f lab_01/Makefile
       - mv hello OUT/$GOOS/
-      - echo Compiling the Go code for MacOS...
+      - echo Compiling the Go code for Linux...
       - GOOS=$Build2
       - mkdir -p OUT/$GOOS
       - make -f lab_01/Makefile
       - mv hello OUT/$GOOS/
-      - echo Compiling the Go code for MacOS...
+      - echo Compiling the Go code for Windows...
       - GOOS=$Build3
       - mkdir -p OUT/$GOOS
       - make -f lab_01/Makefile
-      - mv hello OUT/$GOOS/
+      - mv hello.exe OUT/$GOOS/
 artifacts:
   files:
     - OUT/$Build1/*
